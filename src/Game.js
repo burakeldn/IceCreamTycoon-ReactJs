@@ -184,9 +184,7 @@ sellButtonAll = () => {
 
 //
     /*
-        %kaç dolduğunu gösteren bir bar lazım her kart      
-        için ayrı ayrı
-        zaman yeterse ses efekti ekelmeye çalışıcam
+       
     */
 }
 
