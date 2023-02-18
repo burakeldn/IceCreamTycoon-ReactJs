@@ -212,8 +212,6 @@ sellButtonAll = () => {
         myAudio.play()
     }        
 
-//
-  
 }
 
 export default Game;
