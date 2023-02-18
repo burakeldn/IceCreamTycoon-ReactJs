@@ -17,7 +17,13 @@ class Game {
 
     upgradePrice = {
         iceCreamPrice: 500,
+        milkTankPrice: 1200,
+        grassTankPrice: 1750
+    }
 
+    tankInfo = {
+        grassTank: 750,
+        milkTank: 450
     }
 
     priceAllMoney = {
@@ -32,11 +38,11 @@ class Game {
     }
 
     priceAllMilk = {
-        makeSelfMilk: 0.30,
-        makerMilk: 0.50,
-        carMilk: 12,
-        truckMilk: 22,
-        shopMilk: 55,
+        makeSelfMilk: 1.20,
+        makerMilk: 1.50,
+        carMilk: 18,
+        truckMilk: 28,
+        shopMilk: 64,
     }
 
     priceAllGrass = {
@@ -77,22 +83,30 @@ class Game {
      doFarm = () => {
         this.currentMoney -= this.priceAllMoney.farm
         this.currentFarm ++
-        this.currentGrass += this.productAll.farmProd
+        if(this.currentGrass < this.tankInfo.grassTank && (this.currentGrass + this.productAll.farmProd) < this.tankInfo.grassTank){
+            this.currentGrass += this.productAll.farmProd
+        }
         setInterval(() => {
-            this.currentGrass += (this.productAll.farmProd * this.currentFarm)/this.currentFarm
-        }, 30000);
+            if(this.currentGrass < this.tankInfo.grassTank && (this.currentGrass + this.productAll.farmProd) < this.tankInfo.grassTank){
+                this.currentGrass += (this.productAll.farmProd * this.currentFarm)/this.currentFarm 
+            }
+        }, 75000);
      }
 
      doGoat = () => {
         this.currentMoney -= this.priceAllMoney.goat
         this.currentGoat ++
         this.currentGrass -= (this.priceAllGrass.goatGrass * this.currentGoat)/this.currentGoat
-        this.currentMilk += this.productAll.goatProd
-
+        if(this.currentMilk < this.tankInfo.milkTank && (this.currentMilk + this.productAll.goatProd) < this.tankInfo.milkTank){
+            this.currentMilk += this.productAll.goatProd
+        }
+        
         setInterval(() => {
-            if(this.currentGrass > (this.currentGoat * this.priceAllGrass.goatGrass)){
-            this.currentGrass -= (this.currentGoat * this.priceAllGrass.goatGrass)/this.currentGoat
-            this.currentMilk += (this.currentGoat * this.productAll.goatProd)/this.currentGoat}
+            if(this.currentMilk < this.tankInfo.milkTank && (this.currentMilk + this.productAll.goatProd) < this.tankInfo.milkTank){
+                if(this.currentGrass > (this.currentGoat * this.priceAllGrass.goatGrass)){
+                    this.currentGrass -= (this.currentGoat * this.priceAllGrass.goatGrass)/this.currentGoat
+                    this.currentMilk += (this.currentGoat * this.productAll.goatProd)/this.currentGoat}
+            }
         }, 40000)
 
      }
@@ -101,12 +115,16 @@ class Game {
         this.currentMoney -= this.priceAllMoney.cow
         this.currentCow ++
         this.currentGrass -= (this.priceAllGrass.cowGrass * this.currentCow)/this.currentCow
-        this.currentMilk += this.productAll.cowProd
-
+        if(this.currentMilk < this.tankInfo.milkTank && (this.currentMilk + this.productAll.cowProd) < this.tankInfo.milkTank){
+            this.currentMilk += this.productAll.cowProd
+        }
+        
         setInterval(() => {
-            if(this.currentGrass > (this.currentCow * this.priceAllGrass.cowGrass)){
-            this.currentGrass -= (this.currentCow * this.priceAllGrass.cowGrass)/this.currentCow
-            this.currentMilk += (this.currentCow * this.productAll.cowProd)/this.currentCow}
+            if(this.currentMilk < this.tankInfo.milkTank && (this.currentMilk + this.productAll.cowProd) < this.tankInfo.milkTank){
+                if(this.currentGrass > (this.currentCow * this.priceAllGrass.cowGrass)){
+                    this.currentGrass -= (this.currentCow * this.priceAllGrass.cowGrass)/this.currentCow
+                    this.currentMilk += (this.currentCow * this.productAll.cowProd)/this.currentCow}
+            }
         }, 40000)
      }
 
@@ -174,6 +192,18 @@ sellButtonAll = () => {
         this.currentMoney -= this.upgradePrice.iceCreamPrice 
         this.upgradePrice.iceCreamPrice += Math.floor((this.upgradePrice.iceCreamPrice)/100)*70
 }
+
+    upgradeGrassTank = () => {
+        this.currentMoney -= this.upgradePrice.grassTankPrice
+        this.upgradePrice.grassTankPrice += Math.floor((this.upgradePrice.grassTankPrice)/100)*70
+        this.tankInfo.grassTank += Math.floor((this.tankInfo.grassTank)/100)*30
+    }
+
+    upgradeMilkTank = () => {
+        this.currentMoney -= this.upgradePrice.milkTankPrice
+        this.upgradePrice.milkTankPrice += Math.floor((this.upgradePrice.milkTankPrice)/100)*70
+        this.tankInfo.milkTank += Math.floor((this.tankInfo.milkTank)/100)*30
+    }
 //
 
 // Sound Effects
@@ -183,11 +213,7 @@ sellButtonAll = () => {
     }        
 
 //
-    /*
-        %kaç dolduğunu gösteren bir bar lazım her kart      
-        için ayrı ayrı
-        zaman yeterse ses efekti ekelmeye çalışıcam
-    */
+  
 }
 
 export default Game;

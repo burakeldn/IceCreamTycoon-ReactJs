@@ -12,20 +12,7 @@ body {
   min-height: 100vh;
   background-color: rgb(219, 219, 219);
 }
-/*
-.base{
-  margin: auto;
-  align-items: center;
-  justify-content: center;
-  width: 80%;
-  background-color: rgb(161, 159, 159);
-  color: #fff;
-  height: 300px;
-  font-size: 1rem;
-  display: flex;
-  flex-wrap: wrap;
-}
-*/
+
 .right-Side{
   color: #fff;
   justify-content: right;
@@ -148,4 +135,80 @@ body {
   cursor: pointer;
   background-color:rgb(136, 136, 136);
   color:rgb(71, 71, 71)
+}
+
+.GrassTank{
+  color: #fff;
+  justify-content: right;
+  text-align: center;
+  width: 42%;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #333;
+  opacity: 0.7; 
+  min-height: 200px;
+  font-size: 1.5rem;
+  border-radius: 5px;
+}
+
+.MilkTank{
+  color: #fff;
+  text-align: center;
+  width: 42%;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  padding: 10px;
+  background-color: #333;
+  opacity: 0.7; 
+  min-height: 200px;
+  font-size: 1.5rem;
+  border-radius: 5px;
+}
+
+.progressbar{
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	height: 35px;
+	border-radius: 5px;
+	background-color: #eee;
+}
+
+.progressPercent{
+	font-weight: 600;
+	font-family:'Franklin Gothic Medium';
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	color: #eee;
+	text-shadow: -1px 0 #555, 0 1px #555, 1px 0 #555, 0 -1px #555;
+}
+
+.GrassTank button{
+  margin: 5px 15px;
+  width: 70px;
+  height: 25px;
+  border-style: none;
+  border-radius: 15px;
+  background-color:rgb(179, 179, 179);
+}
+
+.MilkTank button{
+  margin: 5px 15px;
+  width: 70px;
+  height: 25px;
+  border-style: none;
+  border-radius: 15px;
+  background-color:rgb(179, 179, 179);
+}
+
+.GrassTank button:hover{
+  cursor: pointer;
+  background-color:rgb(207, 206, 206);
+}
+
+.MilkTank button:hover{
+  cursor: pointer;
+  background-color:rgb(207, 206, 206);
 }
