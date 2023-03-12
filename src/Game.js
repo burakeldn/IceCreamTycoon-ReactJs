@@ -1,5 +1,7 @@
 class Game {
 
+    firstDate = Date.now()
+
     // Current Information
     currentFarm = 0
     currentGrass = 0
@@ -12,8 +14,6 @@ class Game {
     currentTruck = 0
     currentShop = 0
     currentMoney = 2000
-
-    firstDate = Date.now()
 
     upgradePrice = {
         iceCreamPrice: 500,
@@ -205,12 +205,6 @@ sellButtonAll = () => {
         this.tankInfo.milkTank += Math.floor((this.tankInfo.milkTank)/100)*30
     }
 //
-
-// Sound Effects
-    soundEffectClick = () => {
-        let myAudio = document.querySelector('#audio')
-        myAudio.play()
-    }        
 
 }
 
